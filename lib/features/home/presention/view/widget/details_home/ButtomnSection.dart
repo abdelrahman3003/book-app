@@ -1,7 +1,9 @@
 import 'package:book/core/widgets/customButton.dart';
 import 'package:book/features/home/data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../manager/featurebooks_Cubit/featurebooks_cubit.dart';
 
 class ButtomnSection extends StatelessWidget {
   const ButtomnSection({super.key, required this.bookModel});
@@ -25,14 +27,10 @@ class ButtomnSection extends StatelessWidget {
           Expanded(
             child: CustomButtom(
                 onPressed: () async {
-                  Uri url = Uri.parse(bookModel.volumeInfo.previewLink!);
-                  if (await canLaunchUrl(url)) {
-                    return await canLaunchUrl(url);
-                  }
-                  return ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("cann't launch url$url")));
+                  BlocProvider.of<FeaturebooksCubit>(context)
+                      .getUrl(bookModel.volumeInfo.previewLink!, context);
                 },
-                backgroundcolor: Color(0xffEF8262),
+                backgroundcolor: const Color(0xffEF8262),
                 textcolor: Colors.white,
                 text: getext(),
                 borderRadius: const BorderRadius.only(

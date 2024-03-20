@@ -27,7 +27,7 @@ class _HomeDetailsState extends State<HomeDetails> {
     return Scaffold(
       body: SafeArea(
           child: CustomScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         slivers: [
           SliverToBoxAdapter(
             child: Column(
@@ -44,7 +44,7 @@ class _HomeDetailsState extends State<HomeDetails> {
                 const SizedBox(
                   height: 30,
                 ),
-                BestSellersDetailsSection(),
+                const BestSellersDetailsSection(),
               ],
             ),
           ),

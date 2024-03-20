@@ -39,7 +39,7 @@ abstract class RoutesApp {
       path: kSearch,
       builder: (context, state) => BlocProvider(
         create: (context) => SearchbookCubit(SearchRepoImp(ApiService(Dio()))),
-        child: Search(),
+        child: const Search(),
       ),
     )
   ]);

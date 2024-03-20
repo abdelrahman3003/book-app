@@ -5,6 +5,8 @@ import 'package:book/features/home/data/models/book_model/book_model.dart';
 import 'package:book/features/home/data/repos/home_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeREpoImp implements HomeRepo {
   final ApiService apiService;
@@ -59,6 +61,17 @@ class HomeREpoImp implements HomeRepo {
     } catch (e) {
       if (e is DioError) return left(ServerFailure.froDioError(e));
       return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  getUrl(urL, context) async {
+    Uri url = Uri.parse(urL);
+    if (await canLaunchUrl(url)) {
+      await launch(url.toString());
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("cann't launch url$url")));
     }
   }
 }

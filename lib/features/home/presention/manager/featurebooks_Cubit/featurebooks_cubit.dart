@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:book/features/home/data/models/book_model/book_model.dart';
 import 'package:book/features/home/data/repos/home_repo.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 part 'featurebooks_state.dart';
 
@@ -16,5 +17,9 @@ class FeaturebooksCubit extends Cubit<FeaturebooksState> {
     }, (books) {
       emit(FeaturebooksSucessState(books));
     });
+  }
+
+  getUrl(String urL, BuildContext context) async {
+    await homeRepo.getUrl(urL, context);
   }
 }
