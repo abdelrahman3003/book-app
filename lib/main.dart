@@ -7,8 +7,6 @@ import 'package:book/features/home/presention/manager/newestbooks/newestbooks_cu
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:google_fonts/google_fonts.dart';
-
 void main() {
   setupServiceLocator();
   runApp(const book());
@@ -37,9 +35,8 @@ class book extends StatelessWidget {
       child: MaterialApp.router(
         routerConfig: RoutesApp.router,
         theme: ThemeData.dark().copyWith(
-            scaffoldBackgroundColor: Constant.kPrimaryColor,
-            textTheme:
-                GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme)),
+          scaffoldBackgroundColor: Constant.kPrimaryColor,
+        ),
         debugShowCheckedModeBanner: false,
       ),
     );
